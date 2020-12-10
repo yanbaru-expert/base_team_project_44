@@ -3,9 +3,11 @@ class TasksController < ApplicationController
   end
 
   def new
+    @task = Task.new
   end
 
   def create
+    Task.create(task_params)
   end
 
   def show
@@ -18,5 +20,10 @@ class TasksController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def task_params
+    params.require(:task).permit(:title, :content)
   end
 end
