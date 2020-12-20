@@ -1,5 +1,10 @@
 class MessagesController < ApplicationController
 
+
+  def index
+    @messages = Message.select("title")
+  end
+
   def new
     @message = Message.new
   end
@@ -10,6 +15,6 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:title,content)
+    params.require(:message).permit(:title, :content)
   end
 end
