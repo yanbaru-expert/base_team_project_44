@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
 
 
   def index
-    @messages = Message.select("title")
+    @messages = Message.all
   end
 
   def new
@@ -11,6 +11,10 @@ class MessagesController < ApplicationController
 
   def create
     Message.create(message_params)
+  end
+
+  def show
+    @message = Message.find(params[:id])
   end
 
   private
